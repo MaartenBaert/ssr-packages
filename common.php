@@ -1,7 +1,15 @@
 <?php
 
+/*
+Copyright (c) 2012-2013 Maarten Baert <maarten-baert@hotmail.com>
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+*/
+
 $packages_dir = dirname(__FILE__);
-$ssr_dir = "$packages_dir/..";
+$ssr_dir = "$packages_dir/../ssr";
 $build_dir = "$packages_dir/private-build";
 
 $package_arch_dir = "$packages_dir/package-arch";
@@ -12,6 +20,7 @@ $build_ubuntu_dir = "$packages_dir/private-build-ubuntu";
 
 $ubuntuversions = array("precise", "quantal", "raring", "saucy");
 
+// make all errors fatal
 error_reporting(E_ALL);
 function error_handler($errno, $errstr, $file, $line) {
 	if(!(error_reporting() & $errno))
@@ -22,6 +31,7 @@ function error_handler($errno, $errstr, $file, $line) {
 }
 set_error_handler("error_handler");
 
+// make all assertion failures fatal
 function assert_callback($file, $line, $expression) {
 	die("Assertion failure: " . (($expression == "")? "(unknown expression)" : $expression) . "\n"
 		. "File: " . $file . "\n"
