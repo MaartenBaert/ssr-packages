@@ -1,7 +1,7 @@
 <?php
 
 /*
-Copyright (c) 2012-2013 Maarten Baert <maarten-baert@hotmail.com>
+Copyright (c) 2012-2014 Maarten Baert <maarten-baert@hotmail.com>
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
@@ -30,7 +30,7 @@ function arch_generate_pkgbuild($lib32, $packagename, $version, $subversion) {
 	$out .= "source=(\"git+https://github.com/MaartenBaert/ssr.git#tag=$version\")\n";
 	$out .= "md5sums=(\"SKIP\")\n";
 	$out .= ($lib32)? "depends=(\"lib32-libgl\" \"lib32-glu\" \"lib32-libx11\" \"lib32-libxext\" \"lib32-libxfixes\")\n"
-					: "depends=(\"qt4\" \"ffmpeg\" \"alsa-lib\" \"libpulse\" \"libgl\" \"glu\" \"libx11\" \"libxext\" \"libxfixes\")\n";
+					: "depends=(\"qt4\" \"ffmpeg\" \"alsa-lib\" \"libpulse\" \"jack\" \"libgl\" \"glu\" \"libx11\" \"libxext\" \"libxfixes\")\n";
 	if(!$lib32) {
 		$out .= "if test \"\$CARCH\" == x86_64; then\n";
 		$out .= "	optdepends=(\"lib32-simplescreenrecorder: OpenGL recording of 32-bit applications\")\n";
@@ -43,14 +43,13 @@ function arch_generate_pkgbuild($lib32, $packagename, $version, $subversion) {
 	$out .= "\n";
 	$out .= "build() {\n";
 	$out .= "	cd ssr\n";
-	$out .= "	export CPPFLAGS=\"\$CPPFLAGS -DNDEBUG -DQT_NO_DEBUG -DSSR_USE_FFMPEG_VERSIONS=1\"\n";
 	if($lib32) {
 		$out .= "	export CC=\"gcc -m32\"\n";
 		$out .= "	export CXX=\"g++ -m32\"\n";
 		$out .= "	export PKG_CONFIG_PATH=\"/usr/lib32/pkgconfig\"\n";
-		$out .= "	./configure --prefix=/usr --libdir=/usr/lib32 --disable-ssrprogram\n";
+		$out .= "	./configure --prefix=/usr --libdir=/usr/lib32 --disable-ssrprogram --disable-assert\n";
 	} else {
-		$out .= "	./configure --prefix=/usr\n";
+		$out .= "	./configure --prefix=/usr --disable-assert\n";
 	}
 	$out .= "	make\n";
 	$out .= "}\n";

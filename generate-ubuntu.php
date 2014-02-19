@@ -1,7 +1,7 @@
 <?php
 
 /*
-Copyright (c) 2012-2013 Maarten Baert <maarten-baert@hotmail.com>
+Copyright (c) 2012-2014 Maarten Baert <maarten-baert@hotmail.com>
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
@@ -61,11 +61,11 @@ function ubuntu_generate_copyright() {
 	$out .= "Source: <http://www.maartenbaert.be/simplescreenrecorder>\n";
 	$out .= "\n";
 	$out .= "Files: *\n";
-	$out .= "Copyright: 2012-2013 Maarten Baert <maarten-baert@hotmail.com>\n";
+	$out .= "Copyright: 2012-2014 Maarten Baert <maarten-baert@hotmail.com>\n";
 	$out .= "License: GPL-3.0+\n";
 	$out .= "\n";
 	$out .= "Files: debian/*\n";
-	$out .= "Copyright: 2012-2013 Maarten Baert <maarten-baert@hotmail.com>\n";
+	$out .= "Copyright: 2012-2014 Maarten Baert <maarten-baert@hotmail.com>\n";
 	$out .= "License: GPL-3.0+\n";
 	$out .= "\n";
 	$out .= "License: GPL-3.0+\n";
@@ -106,14 +106,12 @@ function ubuntu_generate_rules($lib) {
 	$out .= "# Uncomment this to turn on verbose mode.\n";
 	$out .= "#export DH_VERBOSE=1\n";
 	$out .= "\n";
-	$out .= "CPPFLAGS+=-DNDEBUG -DQT_NO_DEBUG -DSSR_USE_FFMPEG_VERSIONS=0\n";
-	$out .= "\n";
 	$out .= "%:\n";
 	$out .= "	dh $@\n";
 	$out .= "\n";
 	$out .= "override_dh_auto_configure:\n";
-	$out .= ($lib)? "	dh_auto_configure -- --disable-ssrprogram\n"
-				  : "	dh_auto_configure -- --disable-glinjectlib\n";
+	$out .= ($lib)? "	dh_auto_configure -- --disable-ssrprogram --disable-assert --disable-ffmpeg-versions\n"
+				  : "	dh_auto_configure -- --disable-glinjectlib --disable-assert --disable-ffmpeg-versions\n";
 	return $out;
 }
 
@@ -140,9 +138,6 @@ function ubuntu_create_package($dir, $lib, $version, $subversion, $ubuntuversion
 					 : ", qt4-qmake, libqt4-dev, libavformat-dev, libavcodec-dev, libavutil-dev, libswscale-dev, libasound2-dev, libpulse-dev");
 	$predepends = "\${misc:Pre-Depends}";
 	$depends = "\${shlibs:Depends}, \${misc:Depends}";
-	/*$depends = "\${shlibs:Depends}, \${misc:Depends}, libx11-6, libxext6, libxfixes3"
-			. (($lib)? ", libgl1-mesa-glx | libgl1, libglu1-mesa | libglu1"
-					: ", libqtgui4, libavformat53 | libavformat-extra-53, libavcodec53 | libavcodec-extra-53, libavutil51 | libavutil-extra-51, libswscale2 | libswscale-extra-2, libasound2, libpulse0");*/
 	$recommends = ($lib)? "" : "simplescreenrecorder-lib";
 	$extradescription = ($lib)? "This package contains the GLInject library."
 							  : "This package contains the main program.";

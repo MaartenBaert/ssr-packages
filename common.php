@@ -1,7 +1,7 @@
 <?php
 
 /*
-Copyright (c) 2012-2013 Maarten Baert <maarten-baert@hotmail.com>
+Copyright (c) 2012-2014 Maarten Baert <maarten-baert@hotmail.com>
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
@@ -18,7 +18,8 @@ $package_ubuntu_dir = "$packages_dir/package-ubuntu";
 $build_arch_dir = "$packages_dir/private-build-arch";
 $build_ubuntu_dir = "$packages_dir/private-build-ubuntu";
 
-$ubuntuversions = array("precise", "quantal", "raring", "saucy");
+// Raring was supported until 2014-01 (9 months instead of the original 18 months). So quantal is still supported.
+$ubuntuversions = array("precise", "quantal", "saucy");
 
 // make all errors fatal
 error_reporting(E_ALL);
@@ -66,7 +67,7 @@ for($i = 1; $i < $_SERVER["argc"]; ++$i) {
 // --------------------------------------------------------
 
 exec_check("$ssr_dir/configure --version", $lines);
-assert(preg_match("/^simplescreenrecorder configure ([0-9\.]+)$/", $lines[0], $match));
+assert(preg_match("/^simplescreenrecorder configure ([0-9a-zA-Z\.]+)$/", $lines[0], $match));
 $version = $match[1];
 $subversion = trim(file_get_contents("$packages_dir/subversion"));
 
