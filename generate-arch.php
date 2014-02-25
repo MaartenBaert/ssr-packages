@@ -13,36 +13,54 @@ require_once("common.php");
 exec_check("rm -rf \"$package_arch_dir\"", $lines);
 @mkdir($package_arch_dir);
 
-arch_create_package($package_arch_dir, false, $version, $subversion);
-arch_create_package($package_arch_dir, true, $version, $subversion);
+arch_create_package($package_arch_dir, false, false, $version, $subversion);
+arch_create_package($package_arch_dir, true, false, $version, $subversion);
+arch_create_package($package_arch_dir, false, true, $version, $subversion);
+arch_create_package($package_arch_dir, true, true, $version, $subversion);
 
-function arch_generate_pkgbuild($lib32, $packagename, $version, $subversion) {
+function arch_generate_pkgbuild($lib32, $git, $packagename, $version, $subversion) {
 	$out = "";
 	$out .= "pkgname=$packagename\n";
-	$out .= "pkgver=$version\n";
-	$out .= "pkgrel=$subversion\n";
-	$out .= ($lib32)? "pkgdesc=\"OpenGL recording of 32-bit applications with SimpleScreenRecorder.\"\n"
-					: "pkgdesc=\"A feature-rich screen recorder that supports X11 and OpenGL.\"\n";
+	$out .= ($git)? "pkgver=0.0.0\n"
+				  : "pkgver=$version\n";
+	$out .= ($git)? "pkgrel=1\n"
+				  : "pkgrel=$subversion\n";
+	$extra_desc = ($git)? " (Git version)" : "";
+	$out .= ($lib32)? "pkgdesc=\"OpenGL recording of 32-bit applications with SimpleScreenRecorder.$extra_desc\"\n"
+					: "pkgdesc=\"A feature-rich screen recorder that supports X11 and OpenGL.$extra_desc\"\n";
 	$out .= ($lib32)? "arch=(\"x86_64\")\n"
 					: "arch=(\"i686\" \"x86_64\")\n";
 	$out .= "url=\"http://www.maartenbaert.be/simplescreenrecorder/\"\n";
 	$out .= "license=(\"GPL3\")\n";
-	$out .= "source=(\"git+https://github.com/MaartenBaert/ssr.git#tag=$version\")\n";
+	$out .= ($git)? "source=(\"git+https://github.com/MaartenBaert/ssr.git\")\n"
+	              : "source=(\"git+https://github.com/MaartenBaert/ssr.git#tag=$version\")\n";
 	$out .= "md5sums=(\"SKIP\")\n";
 	$out .= ($lib32)? "depends=(\"lib32-libgl\" \"lib32-glu\" \"lib32-libx11\" \"lib32-libxext\" \"lib32-libxfixes\")\n"
 					: "depends=(\"qt4\" \"ffmpeg\" \"alsa-lib\" \"libpulse\" \"jack\" \"libgl\" \"glu\" \"libx11\" \"libxext\" \"libxfixes\")\n";
 	if(!$lib32) {
 		$out .= "if test \"\$CARCH\" == x86_64; then\n";
-		$out .= "	optdepends=(\"lib32-simplescreenrecorder: OpenGL recording of 32-bit applications\")\n";
+		$out .= "	optdepends=(\"lib32-$packagename: OpenGL recording of 32-bit applications\")\n";
 		$out .= "fi\n";
 	}
 	$out .= ($lib32)? "makedepends=(\"git\" \"gcc-multilib\")\n"
 					: "makedepends=(\"git\")\n";
+	if($git) {
+		$packagename_nogit = substr($packagename, 0, -4);
+		$out .= "conflicts=(\"$packagename_nogit\")\n";
+		$out .= "provides=(\"$packagename_nogit\")\n";
+	}
 	$out .= "options=(\"!libtool\")\n";
 	$out .= "install=$packagename.install\n";
 	$out .= "\n";
+	if($git) {
+		$out .= "pkgver() {\n";
+		$out .= "	cd \"\${srcdir}/ssr\"\n";
+		$out .= "	# Use the tag of the last commit\n";
+		$out .= "	git describe --long | sed -E 's/([^-]*-g)/r\\1/;s/-/./g'\n";
+		$out .= "}\n";
+	}
 	$out .= "build() {\n";
-	$out .= "	cd ssr\n";
+	$out .= "	cd \"\${srcdir}/ssr\"\n";
 	if($lib32) {
 		$out .= "	export CC=\"gcc -m32\"\n";
 		$out .= "	export CXX=\"g++ -m32\"\n";
@@ -54,13 +72,13 @@ function arch_generate_pkgbuild($lib32, $packagename, $version, $subversion) {
 	$out .= "	make\n";
 	$out .= "}\n";
 	$out .= "package() {\n";
-	$out .= "	cd ssr\n";
+	$out .= "	cd \"\${srcdir}/ssr\"\n";
 	$out .= "	make DESTDIR=\"\${pkgdir}\" install\n";
 	$out .= "}\n";
 	return $out;
 }
 
-function arch_generate_install($lib32) {
+function arch_generate_install($lib32, $git) {
 	$out = "";
 	$out .= "post_install() {\n";
 	if(!$lib32) {
@@ -78,11 +96,13 @@ function arch_generate_install($lib32) {
 	return $out;
 }
 
-function arch_create_package($dir, $lib32, $version, $subversion) {
+function arch_create_package($dir, $lib32, $git, $version, $subversion) {
 	$packagename = ($lib32)? "lib32-simplescreenrecorder" : "simplescreenrecorder";
+	if($git)
+		$packagename .= "-git";
 	@mkdir("$dir/$packagename");
-	file_put_contents("$dir/$packagename/PKGBUILD", arch_generate_pkgbuild($lib32, $packagename, $version, $subversion));
-	file_put_contents("$dir/$packagename/$packagename.install", arch_generate_install($lib32));
+	file_put_contents("$dir/$packagename/PKGBUILD", arch_generate_pkgbuild($lib32, $git, $packagename, $version, $subversion));
+	file_put_contents("$dir/$packagename/$packagename.install", arch_generate_install($lib32, $git));
 }
 
 ?>
