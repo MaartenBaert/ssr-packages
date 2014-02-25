@@ -135,7 +135,7 @@ function ubuntu_create_package($dir, $lib, $version, $subversion, $ubuntuversion
 	$multiarch = ($lib)? "same" : "";
 	$builddepends = "debhelper (>= 9), dpkg-dev (>= 1.16.0), build-essential, pkg-config, libx11-dev, libxext-dev, libxfixes-dev"
 			. (($lib)? ", libgl1-mesa-dev, libglu1-mesa-dev"
-					 : ", qt4-qmake, libqt4-dev, libavformat-dev, libavcodec-dev, libavutil-dev, libswscale-dev, libasound2-dev, libpulse-dev");
+					 : ", qt4-qmake, libqt4-dev, libavformat-dev, libavcodec-dev, libavutil-dev, libswscale-dev, libasound2-dev, libpulse-dev, libjack-dev");
 	$predepends = "\${misc:Pre-Depends}";
 	$depends = "\${shlibs:Depends}, \${misc:Depends}";
 	$recommends = ($lib)? "" : "simplescreenrecorder-lib";
