@@ -35,8 +35,8 @@ function arch_generate_pkgbuild($lib32, $git, $packagename, $version, $subversio
 	$out .= ($git)? "source=(\"git+https://github.com/MaartenBaert/ssr.git\")\n"
 	              : "source=(\"git+https://github.com/MaartenBaert/ssr.git#tag=$version\")\n";
 	$out .= "md5sums=(\"SKIP\")\n";
-	$out .= ($lib32)? "depends=(\"lib32-libgl\" \"lib32-glu\" \"lib32-libx11\" \"lib32-libxext\" \"lib32-libxfixes\")\n"
-					: "depends=(\"qt4\" \"ffmpeg\" \"alsa-lib\" \"libpulse\" \"jack\" \"libgl\" \"glu\" \"libx11\" \"libxext\" \"libxfixes\")\n";
+	$out .= ($lib32)? "depends=(\"lib32-libgl\" \"lib32-glu\" \"lib32-libx11\" \"lib32-libxfixes\" \"lib32-libxext\")\n"
+					: "depends=(\"qt4\" \"ffmpeg\" \"alsa-lib\" \"libpulse\" \"jack\" \"libgl\" \"glu\" \"libx11\" \"libxfixes\" \"libxext\" \"libxi\")\n";
 	if(!$lib32) {
 		$out .= "if test \"\$CARCH\" == x86_64; then\n";
 		$out .= "	optdepends=(\"lib32-$packagename: OpenGL recording of 32-bit applications\")\n";

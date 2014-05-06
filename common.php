@@ -50,12 +50,17 @@ function exec_check($cmd, &$lines) {
 // --------------------------------------------------------
 
 $upload = false;
+$git_upload = false;
 
 for($i = 1; $i < $_SERVER["argc"]; ++$i) {
 	$opt = $_SERVER["argv"][$i];
 	switch($opt) {
 		case "upload": {
 			$upload = true;
+			break;
+		}
+		case "git-upload": {
+			$git_upload = true;
 			break;
 		}
 		default: {
