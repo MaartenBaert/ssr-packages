@@ -18,8 +18,7 @@ $package_ubuntu_dir = "$packages_dir/package-ubuntu";
 $build_arch_dir = "$packages_dir/private-build-arch";
 $build_ubuntu_dir = "$packages_dir/private-build-ubuntu";
 
-// Raring was supported until 2014-01 (9 months instead of the original 18 months). So quantal is still supported.
-$ubuntuversions = array("precise", "quantal", "saucy", "trusty");
+$ubuntuversions = array("precise", "trusty", "utopic");
 
 // make all errors fatal
 error_reporting(E_ALL);
@@ -57,6 +56,7 @@ for($i = 1; $i < $_SERVER["argc"]; ++$i) {
 	switch($opt) {
 		case "upload": {
 			$upload = true;
+			$git_upload = true;
 			break;
 		}
 		case "git-upload": {
