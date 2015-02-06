@@ -15,42 +15,59 @@ exec_check("rm -rf \"$package_ubuntu_dir\"", $lines);
 
 foreach($ubuntuversions as $ubuntuversion) {
 	@mkdir("$package_ubuntu_dir/$ubuntuversion");
-	ubuntu_create_package("$package_ubuntu_dir/$ubuntuversion", false, $version, $subversion, $ubuntuversion);
-	ubuntu_create_package("$package_ubuntu_dir/$ubuntuversion", true, $version, $subversion, $ubuntuversion);
+	ubuntu_create_package("$package_ubuntu_dir/$ubuntuversion", $version, $subversion, $ubuntuversion);
 }
 
 function ubuntu_generate_changelog($packagename, $packageversion, $ubuntuversion, $packagedate) {
 	$out = "";
 	$out .= "$packagename ($packageversion) $ubuntuversion; urgency=low\n";
 	$out .= "\n";
-	$out .= "  * Sorry, no changelogs yet.\n";
+	$out .= "  * New release\n";
 	$out .= "\n";
 	$out .= " -- Maarten Baert (v2) <maarten-baert@hotmail.com>  $packagedate\n";
 	return $out;
 }
 
-function ubuntu_generate_control($packagename, $multiarch, $builddepends, $predepends, $depends, $recommends, $extradescription) {
+function ubuntu_generate_control($packagename, $builddepends) {
 	$out = "";
 	$out .= "Source: $packagename\n";
 	$out .= "Section: video\n";
 	$out .= "Priority: optional\n";
 	$out .= "Maintainer: Maarten Baert (v2) <maarten-baert@hotmail.com>\n";
 	$out .= "Build-Depends: $builddepends\n";
-	$out .= "Standards-Version: 3.9.2\n";
+	$out .= "Standards-Version: 3.9.5\n";
 	$out .= "Homepage: http://www.maartenbaert.be/simplescreenrecorder/\n";
 	$out .= "Vcs-Git: git://github.com/MaartenBaert/ssr.git\n";
 	$out .= "Vcs-Browser: https://github.com/MaartenBaert/ssr\n";
 	$out .= "\n";
 	$out .= "Package: $packagename\n";
 	$out .= "Architecture: i386 amd64\n";
-	$out .= "Multi-Arch: $multiarch\n";
-	$out .= "Pre-Depends: $predepends\n";
-	$out .= "Depends: $depends\n";
-	$out .= "Recommends: $recommends\n";
-	$out .= "Description: A feature-rich screen recorder that supports X11 and OpenGL.\n";
-	$out .= " SimpleScreenRecorder is a feature-rich screen recorder that supports X11 and OpenGL. It has a Qt-based graphical user interface. It can record the entire screen or part of it, or record OpenGL applications directly. The recording can be paused and resumed at any time. Many different file formats and codecs are supported.\n";
+	$out .= "Depends: \${shlibs:Depends}, \${misc:Depends}\n";
+	$out .= "Recommends: libssr-glinject\n";
+	$out .= "Description: feature-rich screen recorder that supports X11 and OpenGL\n";
+	$out .= " SimpleScreenRecorder is a feature-rich screen recorder that supports X11 and\n";
+	$out .= " OpenGL. It has a Qt-based graphical user interface. It can record the entire\n";
+	$out .= " screen or part of it, or record OpenGL applications directly.\n";
+	$out .= " The recording can be paused and resumed at any time.\n";
+	$out .= " Many different file formats and codecs are supported.\n";
 	$out .= " .\n";
-	$out .= " $extradescription\n";
+	$out .= " This package contains the main program.\n";
+	$out .= "\n";
+	$out .= "Package: libssr-glinject\n";
+	$out .= "Architecture: i386 amd64\n";
+	$out .= "Multi-Arch: same\n";
+	$out .= "Pre-Depends: \${misc:Pre-Depends}\n";
+	$out .= "Depends: \${shlibs:Depends}, \${misc:Depends}\n";
+	$out .= "Provides: simplescreenrecorder-lib\n";
+	$out .= "Replaces: simplescreenrecorder-lib\n";
+	$out .= "Description: feature-rich screen recorder that supports X11 and OpenGL\n";
+	$out .= " SimpleScreenRecorder is a feature-rich screen recorder that supports X11 and\n";
+	$out .= " OpenGL. It has a Qt-based graphical user interface. It can record the entire\n";
+	$out .= " screen or part of it, or record OpenGL applications directly.\n";
+	$out .= " The recording can be paused and resumed at any time.\n";
+	$out .= " Many different file formats and codecs are supported.\n";
+	$out .= " .\n";
+	$out .= " This package contains the GLInject library.\n";
 	return $out;
 }
 
@@ -61,11 +78,11 @@ function ubuntu_generate_copyright() {
 	$out .= "Source: <http://www.maartenbaert.be/simplescreenrecorder>\n";
 	$out .= "\n";
 	$out .= "Files: *\n";
-	$out .= "Copyright: 2012-2014 Maarten Baert <maarten-baert@hotmail.com>\n";
+	$out .= "Copyright: 2012-2015 Maarten Baert <maarten-baert@hotmail.com>\n";
 	$out .= "License: GPL-3.0+\n";
 	$out .= "\n";
 	$out .= "Files: debian/*\n";
-	$out .= "Copyright: 2012-2014 Maarten Baert <maarten-baert@hotmail.com>\n";
+	$out .= "Copyright: 2012-2015 Maarten Baert <maarten-baert@hotmail.com>\n";
 	$out .= "License: GPL-3.0+\n";
 	$out .= "\n";
 	$out .= "License: GPL-3.0+\n";
@@ -87,67 +104,58 @@ function ubuntu_generate_copyright() {
 	return $out;
 }
 
-function ubuntu_generate_postinst() {
-	$out = "";
-	$out .= "#!/bin/sh\n";
-	$out .= "\n";
-	$out .= "set -e\n";
-	$out .= "\n";
-	$out .= "#DEBHELPER#\n";
-	$out .= "\n";
-	$out .= "exit 0\n";
-	return $out;
-}
-
-function ubuntu_generate_rules($lib) {
+function ubuntu_generate_rules($version, $packagename) {
 	$out = "";
 	$out .= "#!/usr/bin/make -f\n";
 	$out .= "\n";
-	$out .= "# Uncomment this to turn on verbose mode.\n";
-	$out .= "#export DH_VERBOSE=1\n";
-	$out .= "\n";
 	$out .= "%:\n";
-	$out .= "	dh $@\n";
+	$out .= "	dh $@ --parallel\n";
 	$out .= "\n";
 	$out .= "override_dh_auto_configure:\n";
-	$out .= ($lib)? "	dh_auto_configure -- --disable-ssrprogram --disable-assert --disable-ffmpeg-versions\n"
-				  : "	dh_auto_configure -- --disable-glinjectlib --disable-assert --disable-ffmpeg-versions\n";
+	$out .= "	dh_auto_configure -- --disable-assert --disable-ffmpeg-versions\n";
+	$out .= "\n";
+	$out .= "override_dh_installdocs:\n";
+	$out .= "	dh_installdocs -A AUTHORS.md notes.txt README.md todo.txt\n";
+	$out .= "\n";
+	$out .= "override_dh_installchangelogs:\n";
+	$out .= "	dh_installchangelogs -A CHANGELOG.md\n";
+	$out .= "\n";
+	$out .= "override_dh_installman:\n";
+	$out .= "	help2man -N --no-discard-stderr --version-string='$version' -n 'feature-rich screen recorder that supports X11 and OpenGL' debian/$packagename/usr/bin/simplescreenrecorder > simplescreenrecorder.1\n";
+	$out .= "	help2man -N --no-discard-stderr --version-string='$version' -n 'inject the GLInject library into a given command' debian/$packagename/usr/bin/ssr-glinject > ssr-glinject.1\n";
+	$out .= "	dh_installman simplescreenrecorder.1 ssr-glinject.1\n";
+	$out .= "\n";
+	$out .= "override_dh_clean:\n";
+	$out .= "	dh_clean simplescreenrecorder.1 ssr-glinject.1\n";
 	return $out;
 }
 
-function ubuntu_create_debian_dir($dir, $changelog, $control, $copyright, $postinst, $rules) {
+function ubuntu_create_debian_dir($dir, $changelog, $control, $copyright, $rules) {
 	@mkdir($dir);
 	@mkdir("$dir/source");
 	file_put_contents("$dir/changelog", $changelog);
 	file_put_contents("$dir/control", $control);
 	file_put_contents("$dir/copyright", $copyright);
-	file_put_contents("$dir/postinst", $postinst);
 	file_put_contents("$dir/rules", $rules);
+	file_put_contents("$dir/libssr-glinject.install", "/usr/lib/*/libssr-glinject.so\n");
+	file_put_contents("$dir/libssr-glinject.lintian-overrides", "# this is a bug in Lintian\npkg-has-shlibs-control-file-but-no-actual-shared-libs\n");
+	file_put_contents("$dir/simplescreenrecorder.install", "/usr/bin\n/usr/share\n");
 	file_put_contents("$dir/compat", "9\n");
-	file_put_contents("$dir/source/format", "1.0\n");
+	file_put_contents("$dir/source/format", "3.0 (native)\n");
 	chmod("$dir/rules", 0755);
 }
 
-function ubuntu_create_package($dir, $lib, $version, $subversion, $ubuntuversion) {
-	$packagename = ($lib)? "simplescreenrecorder-lib" : "simplescreenrecorder";
-	$packageversion = "$version-$subversion~ppa1~${ubuntuversion}1";
+function ubuntu_create_package($dir, $version, $subversion, $ubuntuversion) {
+	$packagename = "simplescreenrecorder";
+	$packageversion = "$version+$subversion~ppa1~${ubuntuversion}1";
 	$packagedate = date("r");
-	$multiarch = ($lib)? "same" : "";
-	$builddepends = "debhelper (>= 9), dpkg-dev (>= 1.16.0), build-essential, pkg-config, libx11-dev, libxext-dev, libxfixes-dev"
-			. (($lib)? ", libgl1-mesa-dev, libglu1-mesa-dev, libx11-dev, libxfixes-dev"
-					 : ", qt4-qmake, libqt4-dev, libavformat-dev, libavcodec-dev, libavutil-dev, libswscale-dev, libasound2-dev, libpulse-dev, libjack-dev, libx11-dev, libxfixes-dev, libxext-dev, libxi-dev");
-	$predepends = "\${misc:Pre-Depends}";
-	$depends = "\${shlibs:Depends}, \${misc:Depends}";
-	$recommends = ($lib)? "" : "simplescreenrecorder-lib";
-	$extradescription = ($lib)? "This package contains the GLInject library."
-							  : "This package contains the main program.";
+	$builddepends = "debhelper (>= 9), dpkg-dev (>= 1.16.0), pkg-config, help2man, libgl1-mesa-dev, libglu1-mesa-dev, qt4-qmake, libqt4-dev, libavformat-dev, libavcodec-dev, libavutil-dev, libswscale-dev, libasound2-dev, libpulse-dev, libjack-dev, libx11-dev, libxfixes-dev, libxext-dev, libxi-dev";
 	@mkdir("$dir/$packagename-$version");
 	ubuntu_create_debian_dir("$dir/$packagename-$version/debian",
 		ubuntu_generate_changelog($packagename, $packageversion, $ubuntuversion, $packagedate),
-		ubuntu_generate_control($packagename, $multiarch, $builddepends, $predepends, $depends, $recommends, $extradescription),
+		ubuntu_generate_control($packagename, $builddepends),
 		ubuntu_generate_copyright(),
-		ubuntu_generate_postinst(),
-		ubuntu_generate_rules($lib));
+		ubuntu_generate_rules($version, $packagename));
 }
 
 ?>
