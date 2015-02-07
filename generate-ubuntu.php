@@ -29,7 +29,7 @@ function ubuntu_generate_changelog($packagename, $packageversion, $ubuntuversion
 	return $out;
 }
 
-function ubuntu_generate_control($packagename, $builddepends, $predepends, $depends, $recommends, $libpackagename) {
+function ubuntu_generate_control($packagename, $builddepends, $libpackagename) {
 	$out = "";
 	$out .= "Source: $packagename\n";
 	$out .= "Section: video\n";
@@ -43,9 +43,8 @@ function ubuntu_generate_control($packagename, $builddepends, $predepends, $depe
 	$out .= "\n";
 	$out .= "Package: $packagename\n";
 	$out .= "Architecture: i386 amd64\n";
-	$out .= "Pre-Depends: $predepends\n";
-	$out .= "Depends: $depends\n";
-	$out .= "Recommends: $recommends\n";
+	$out .= "Depends: \${shlibs:Depends}, \${misc:Depends}\n";
+	$out .= "Recommends: $libpackagename\n";
 	$out .= "Description: feature-rich screen recorder that supports X11 and OpenGL\n";
 	$out .= " SimpleScreenRecorder is a feature-rich screen recorder that supports X11 and\n";
 	$out .= " OpenGL. It has a Qt-based graphical user interface. It can record the entire\n";
@@ -58,9 +57,8 @@ function ubuntu_generate_control($packagename, $builddepends, $predepends, $depe
 	$out .= "Package: $libpackagename\n";
 	$out .= "Architecture: i386 amd64\n";
 	$out .= "Multi-Arch: same\n";
-	$out .= "Pre-Depends: $predepends\n";
-	$out .= "Depends: $depends\n";
-	$out .= "Recommends: $recommends\n";
+	$out .= "Pre-Depends: \${misc:Pre-Depends}\n";
+	$out .= "Depends: \${shlibs:Depends}, \${misc:Depends}\n";
 	$out .= "Description: feature-rich screen recorder that supports X11 and OpenGL - GLInject library\n";
 	$out .= " SimpleScreenRecorder is a feature-rich screen recorder that supports X11 and\n";
 	$out .= " OpenGL. It has a Qt-based graphical user interface. It can record the entire\n";
@@ -138,12 +136,10 @@ function ubuntu_create_package($dir, $version, $subversion, $ubuntuversion) {
 	$packageversion = "$version+$subversion~ppa1~${ubuntuversion}1";
 	$packagedate = date("r");
 	$builddepends = "debhelper (>= 9), dpkg-dev (>= 1.16.0), pkg-config, libgl1-mesa-dev, libglu1-mesa-dev, qt4-qmake, libqt4-dev, libavformat-dev, libavcodec-dev, libavutil-dev, libswscale-dev, libasound2-dev, libpulse-dev, libjack-dev, libx11-dev, libxext-dev, libxfixes-dev, libxi-dev");
-	$predepends = "\${misc:Pre-Depends}";
-	$depends = "\${shlibs:Depends}, \${misc:Depends}";
 	@mkdir("$dir/$packagename-$version");
 	ubuntu_create_debian_dir("$dir/$packagename-$version/debian",
 		ubuntu_generate_changelog($packagename, $packageversion, $ubuntuversion, $packagedate),
-		ubuntu_generate_control($packagename, $builddepends, $predepends, $depends, $recommends, $libpackagename),
+		ubuntu_generate_control($packagename, $builddepends, $libpackagename),
 		ubuntu_generate_copyright(),
 		ubuntu_generate_rules());
 }
