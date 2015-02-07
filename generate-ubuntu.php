@@ -15,15 +15,14 @@ exec_check("rm -rf \"$package_ubuntu_dir\"", $lines);
 
 foreach($ubuntuversions as $ubuntuversion) {
 	@mkdir("$package_ubuntu_dir/$ubuntuversion");
-	ubuntu_create_package("$package_ubuntu_dir/$ubuntuversion", false, $version, $subversion, $ubuntuversion);
-	ubuntu_create_package("$package_ubuntu_dir/$ubuntuversion", true, $version, $subversion, $ubuntuversion);
+	ubuntu_create_package("$package_ubuntu_dir/$ubuntuversion", $version, $subversion, $ubuntuversion);
 }
 
 function ubuntu_generate_changelog($packagename, $packageversion, $ubuntuversion, $packagedate) {
 	$out = "";
 	$out .= "$packagename ($packageversion) $ubuntuversion; urgency=low\n";
 	$out .= "\n";
-	$out .= "  * Sorry, no changelogs yet.\n";
+	$out .= "  * New release\n";
 	$out .= "\n";
 	$out .= " -- Maarten Baert (v2) <maarten-baert@hotmail.com>  $packagedate\n";
 	return $out;
@@ -77,11 +76,11 @@ function ubuntu_generate_copyright() {
 	$out .= "Source: <http://www.maartenbaert.be/simplescreenrecorder>\n";
 	$out .= "\n";
 	$out .= "Files: *\n";
-	$out .= "Copyright: 2012-2014 Maarten Baert <maarten-baert@hotmail.com>\n";
+	$out .= "Copyright: 2012-2015 Maarten Baert <maarten-baert@hotmail.com>\n";
 	$out .= "License: GPL-3.0+\n";
 	$out .= "\n";
 	$out .= "Files: debian/*\n";
-	$out .= "Copyright: 2012-2014 Maarten Baert <maarten-baert@hotmail.com>\n";
+	$out .= "Copyright: 2012-2015 Maarten Baert <maarten-baert@hotmail.com>\n";
 	$out .= "License: GPL-3.0+\n";
 	$out .= "\n";
 	$out .= "License: GPL-3.0+\n";
@@ -135,7 +134,7 @@ function ubuntu_generate_overrides() {
 	$out .= "\n";
 	$out .= "# This is not a real shared library and doesn't require a versioned soname.\n";
 	$out .= "# And for technical reasons it's better to store the library inside ld.so's search path.\n";
-	$out .= "simplescreenrecorder-lib binary: shlib-without-versioned-soname usr/lib/*/libssr-glinject.so libssr-glinject.so";
+	$out .= "simplescreenrecorder-lib binary: shlib-without-versioned-soname usr/lib/*/libssr-glinject.so libssr-glinject.so\n";
 	$out .= "\n";
 	$out .= "# we'll keep this package name for historical and compatibility reasons\n";
 	$out .= "simplescreenrecorder-lib binary: package-name-doesnt-match-sonames libssr-glinject\n";
@@ -162,13 +161,14 @@ function ubuntu_create_package($dir, $version, $subversion, $ubuntuversion) {
 	$libpackagename = "simplescreenrecorder-lib";
 	$packageversion = "$version+$subversion~ppa1~${ubuntuversion}1";
 	$packagedate = date("r");
-	$builddepends = "debhelper (>= 9), dpkg-dev (>= 1.16.0), pkg-config, help2man, libgl1-mesa-dev, libglu1-mesa-dev, qt4-qmake, libqt4-dev, libavformat-dev, libavcodec-dev, libavutil-dev, libswscale-dev, libasound2-dev, libpulse-dev, libjack-dev, libx11-dev, libxext-dev, libxfixes-dev, libxi-dev");
+	$builddepends = "debhelper (>= 9), dpkg-dev (>= 1.16.0), pkg-config, help2man, libgl1-mesa-dev, libglu1-mesa-dev, qt4-qmake, libqt4-dev, libavformat-dev, libavcodec-dev, libavutil-dev, libswscale-dev, libasound2-dev, libpulse-dev, libjack-dev, libx11-dev, libxext-dev, libxfixes-dev, libxi-dev";
 	@mkdir("$dir/$packagename-$version");
 	ubuntu_create_debian_dir("$dir/$packagename-$version/debian",
 		ubuntu_generate_changelog($packagename, $packageversion, $ubuntuversion, $packagedate),
 		ubuntu_generate_control($packagename, $builddepends, $libpackagename),
 		ubuntu_generate_copyright(),
-		ubuntu_generate_rules($version, $packagename));
+		ubuntu_generate_rules($version, $packagename),
+		ubuntu_generate_overrides());
 }
 
 ?>
