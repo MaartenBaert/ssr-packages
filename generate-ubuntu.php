@@ -87,18 +87,6 @@ function ubuntu_generate_copyright() {
 	return $out;
 }
 
-function ubuntu_generate_postinst() {
-	$out = "";
-	$out .= "#!/bin/sh\n";
-	$out .= "\n";
-	$out .= "set -e\n";
-	$out .= "\n";
-	$out .= "#DEBHELPER#\n";
-	$out .= "\n";
-	$out .= "exit 0\n";
-	return $out;
-}
-
 function ubuntu_generate_rules($lib) {
 	$out = "";
 	$out .= "#!/usr/bin/make -f\n";
@@ -115,13 +103,12 @@ function ubuntu_generate_rules($lib) {
 	return $out;
 }
 
-function ubuntu_create_debian_dir($dir, $changelog, $control, $copyright, $postinst, $rules) {
+function ubuntu_create_debian_dir($dir, $changelog, $control, $copyright, $rules) {
 	@mkdir($dir);
 	@mkdir("$dir/source");
 	file_put_contents("$dir/changelog", $changelog);
 	file_put_contents("$dir/control", $control);
 	file_put_contents("$dir/copyright", $copyright);
-	file_put_contents("$dir/postinst", $postinst);
 	file_put_contents("$dir/rules", $rules);
 	file_put_contents("$dir/compat", "9\n");
 	file_put_contents("$dir/source/format", "3.0 (native)\n");
@@ -146,7 +133,6 @@ function ubuntu_create_package($dir, $lib, $version, $subversion, $ubuntuversion
 		ubuntu_generate_changelog($packagename, $packageversion, $ubuntuversion, $packagedate),
 		ubuntu_generate_control($packagename, $multiarch, $builddepends, $predepends, $depends, $recommends, $extradescription),
 		ubuntu_generate_copyright(),
-		ubuntu_generate_postinst(),
 		ubuntu_generate_rules($lib));
 }
 
