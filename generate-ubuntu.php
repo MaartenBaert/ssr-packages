@@ -129,13 +129,29 @@ function ubuntu_generate_rules($version, $packagename) {
 	return $out;
 }
 
-function ubuntu_create_debian_dir($dir, $changelog, $control, $copyright, $rules) {
+function ubuntu_generate_overrides() {
+	$out = "# this is a bug in Lintian\n";
+	$out .= "simplescreenrecorder-lib binary: pkg-has-shlibs-control-file-but-no-actual-shared-libs\n";
+	$out .= "\n";
+	$out .= "# This is not a real shared library and doesn't require a versioned soname.\n";
+	$out .= "# And for technical reasons it's better to store the library inside ld.so's search path.\n";
+	$out .= "simplescreenrecorder-lib binary: shlib-without-versioned-soname usr/lib/*/libssr-glinject.so libssr-glinject.so";
+	$out .= "\n";
+	$out .= "# we'll keep this package name for historical and compatibility reasons\n";
+	$out .= "simplescreenrecorder-lib binary: package-name-doesnt-match-sonames libssr-glinject\n";
+	return $out;
+}
+
+function ubuntu_create_debian_dir($dir, $changelog, $control, $copyright, $rules, $overrides) {
 	@mkdir($dir);
 	@mkdir("$dir/source");
 	file_put_contents("$dir/changelog", $changelog);
 	file_put_contents("$dir/control", $control);
 	file_put_contents("$dir/copyright", $copyright);
 	file_put_contents("$dir/rules", $rules);
+	file_put_contents("$dir/simplescreenrecorder-lib.install", "/usr/lib/*/libssr-glinject.so\n");
+	file_put_contents("$dir/simplescreenrecorder-lib.lintian-overrides", $overrides);
+	file_put_contents("$dir/simplescreenrecorder.install", "/usr/bin\n/usr/share\n");
 	file_put_contents("$dir/compat", "9\n");
 	file_put_contents("$dir/source/format", "3.0 (native)\n");
 	chmod("$dir/rules", 0755);
