@@ -103,18 +103,29 @@ function ubuntu_generate_copyright() {
 	return $out;
 }
 
-function ubuntu_generate_rules() {
+function ubuntu_generate_rules($version, $packagename) {
 	$out = "";
 	$out .= "#!/usr/bin/make -f\n";
 	$out .= "\n";
-	$out .= "# Uncomment this to turn on verbose mode.\n";
-	$out .= "#export DH_VERBOSE=1\n";
-	$out .= "\n";
 	$out .= "%:\n";
-	$out .= "	dh $@\n";
+	$out .= "	dh $@ --parallel\n";
 	$out .= "\n";
 	$out .= "override_dh_auto_configure:\n";
 	$out .= "	dh_auto_configure -- --disable-assert --disable-ffmpeg-versions\n";
+	$out .= "\n";
+	$out .= "override_dh_installdocs:\n";
+	$out .= "	dh_installdocs -A AUTHORS.md notes.txt README.md todo.txt\n";
+	$out .= "\n";
+	$out .= "override_dh_installchangelogs:\n";
+	$out .= "	dh_installchangelogs -A CHANGELOG.md\n";
+	$out .= "\n";
+	$out .= "override_dh_installman:\n";
+	$out .= "	help2man -N --no-discard-stderr --version-string='$version' -n 'feature-rich screen recorder that supports X11 and OpenGL' debian/$packagename/usr/bin/simplescreenrecorder > simplescreenrecorder.1\n";
+	$out .= "	help2man -N --no-discard-stderr --version-string='$version' -n 'inject the GLInject library into a given command' debian/$packagename/usr/bin/ssr-glinject > ssr-glinject.1\n";
+	$out .= "	dh_installman simplescreenrecorder.1 ssr-glinject.1\n";
+	$out .= "\n";
+	$out .= "override_dh_clean:\n";
+	$out .= "	dh_clean simplescreenrecorder.1 ssr-glinject.1\n";
 	return $out;
 }
 
@@ -135,13 +146,13 @@ function ubuntu_create_package($dir, $version, $subversion, $ubuntuversion) {
 	$libpackagename = "simplescreenrecorder-lib";
 	$packageversion = "$version+$subversion~ppa1~${ubuntuversion}1";
 	$packagedate = date("r");
-	$builddepends = "debhelper (>= 9), dpkg-dev (>= 1.16.0), pkg-config, libgl1-mesa-dev, libglu1-mesa-dev, qt4-qmake, libqt4-dev, libavformat-dev, libavcodec-dev, libavutil-dev, libswscale-dev, libasound2-dev, libpulse-dev, libjack-dev, libx11-dev, libxext-dev, libxfixes-dev, libxi-dev");
+	$builddepends = "debhelper (>= 9), dpkg-dev (>= 1.16.0), pkg-config, help2man, libgl1-mesa-dev, libglu1-mesa-dev, qt4-qmake, libqt4-dev, libavformat-dev, libavcodec-dev, libavutil-dev, libswscale-dev, libasound2-dev, libpulse-dev, libjack-dev, libx11-dev, libxext-dev, libxfixes-dev, libxi-dev");
 	@mkdir("$dir/$packagename-$version");
 	ubuntu_create_debian_dir("$dir/$packagename-$version/debian",
 		ubuntu_generate_changelog($packagename, $packageversion, $ubuntuversion, $packagedate),
 		ubuntu_generate_control($packagename, $builddepends, $libpackagename),
 		ubuntu_generate_copyright(),
-		ubuntu_generate_rules());
+		ubuntu_generate_rules($version, $packagename));
 }
 
 ?>
