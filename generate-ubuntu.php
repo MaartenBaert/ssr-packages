@@ -124,13 +124,13 @@ function ubuntu_create_debian_dir($dir, $changelog, $control, $copyright, $posti
 	file_put_contents("$dir/postinst", $postinst);
 	file_put_contents("$dir/rules", $rules);
 	file_put_contents("$dir/compat", "9\n");
-	file_put_contents("$dir/source/format", "1.0\n");
+	file_put_contents("$dir/source/format", "3.0 (native)\n");
 	chmod("$dir/rules", 0755);
 }
 
 function ubuntu_create_package($dir, $lib, $version, $subversion, $ubuntuversion) {
 	$packagename = ($lib)? "simplescreenrecorder-lib" : "simplescreenrecorder";
-	$packageversion = "$version-$subversion~ppa1~${ubuntuversion}1";
+	$packageversion = "$version+$subversion~ppa1~${ubuntuversion}1";
 	$packagedate = date("r");
 	$multiarch = ($lib)? "same" : "";
 	$builddepends = "debhelper (>= 9), dpkg-dev (>= 1.16.0), pkg-config, libx11-dev, libxext-dev, libxfixes-dev"
