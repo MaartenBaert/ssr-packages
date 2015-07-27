@@ -35,7 +35,7 @@ function ubuntu_generate_control($packagename, $builddepends, $libpackagename) {
 	$out .= "Priority: optional\n";
 	$out .= "Maintainer: Maarten Baert (v2) <maarten-baert@hotmail.com>\n";
 	$out .= "Build-Depends: $builddepends\n";
-	$out .= "Standards-Version: 3.9.5\n";
+	$out .= "Standards-Version: 3.9.6\n";
 	$out .= "Homepage: http://www.maartenbaert.be/simplescreenrecorder/\n";
 	$out .= "Vcs-Git: git://github.com/MaartenBaert/ssr.git\n";
 	$out .= "Vcs-Browser: https://github.com/MaartenBaert/ssr\n";
