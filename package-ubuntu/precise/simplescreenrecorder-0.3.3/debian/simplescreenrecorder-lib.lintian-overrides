@@ -1,0 +1,9 @@
+# this is a bug in Lintian
+simplescreenrecorder-lib binary: pkg-has-shlibs-control-file-but-no-actual-shared-libs
+
+# This is not a real shared library and doesn't require a versioned soname.
+# And for technical reasons it's better to store the library inside ld.so's search path.
+simplescreenrecorder-lib binary: shlib-without-versioned-soname usr/lib/*/libssr-glinject.so libssr-glinject.so
+
+# we'll keep this package name for historical and compatibility reasons
+simplescreenrecorder-lib binary: package-name-doesnt-match-sonames libssr-glinject
