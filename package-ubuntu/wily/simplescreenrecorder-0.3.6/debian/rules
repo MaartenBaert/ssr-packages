@@ -13,8 +13,8 @@ override_dh_installchangelogs:
 	dh_installchangelogs -A CHANGELOG.md
 
 override_dh_installman:
-	help2man -N --no-discard-stderr --version-string='0.3.3' -n 'feature-rich screen recorder that supports X11 and OpenGL' debian/simplescreenrecorder/usr/bin/simplescreenrecorder > simplescreenrecorder.1
-	help2man -N --no-discard-stderr --version-string='0.3.3' -n 'inject the GLInject library into a given command' debian/simplescreenrecorder/usr/bin/ssr-glinject > ssr-glinject.1
+	help2man -N --no-discard-stderr --version-string='0.3.6' -n 'feature-rich screen recorder that supports X11 and OpenGL' debian/simplescreenrecorder/usr/bin/simplescreenrecorder > simplescreenrecorder.1
+	help2man -N --no-discard-stderr --version-string='0.3.6' -n 'inject the GLInject library into a given command' debian/simplescreenrecorder/usr/bin/ssr-glinject > ssr-glinject.1
 	dh_installman simplescreenrecorder.1 ssr-glinject.1
 
 override_dh_clean:

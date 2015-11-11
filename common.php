@@ -56,7 +56,6 @@ for($i = 1; $i < $_SERVER["argc"]; ++$i) {
 	switch($opt) {
 		case "upload": {
 			$upload = true;
-			$git_upload = true;
 			break;
 		}
 		case "git-upload": {
