@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ --parallel
+
+override_dh_auto_configure:
+	dh_auto_configure -- --disable-assert --disable-ffmpeg-versions
+
+override_dh_installdocs:
+	dh_installdocs -A AUTHORS.md notes.txt README.md todo.txt
+
+override_dh_installchangelogs:
+	dh_installchangelogs -A CHANGELOG.md
+
+override_dh_installman:
+	help2man -N --no-discard-stderr --version-string='0.3.6' -n 'feature-rich screen recorder that supports X11 and OpenGL' debian/simplescreenrecorder/usr/bin/simplescreenrecorder > simplescreenrecorder.1
+	help2man -N --no-discard-stderr --version-string='0.3.6' -n 'inject the GLInject library into a given command' debian/simplescreenrecorder/usr/bin/ssr-glinject > ssr-glinject.1
+	dh_installman simplescreenrecorder.1 ssr-glinject.1
+
+override_dh_clean:
+	dh_clean simplescreenrecorder.1 ssr-glinject.1
