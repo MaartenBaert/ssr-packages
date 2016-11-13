@@ -18,7 +18,8 @@ $package_ubuntu_dir = "$packages_dir/package-ubuntu";
 $build_arch_dir = "$packages_dir/private-build-arch";
 $build_ubuntu_dir = "$packages_dir/private-build-ubuntu";
 
-$ubuntuversions = array("precise", "trusty", "vivid", "wily", "xenial");
+$ubuntuversions = array("precise", "trusty", "vivid", "wily", "xenial", "yakkety");
+$ubuntuversions_with_libav = array("precise", "trusty", "vivid", "wily", "xenial");
 
 // make all errors fatal
 error_reporting(E_ALL);

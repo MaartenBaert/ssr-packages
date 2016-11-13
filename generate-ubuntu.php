@@ -102,7 +102,8 @@ function ubuntu_generate_copyright() {
 	return $out;
 }
 
-function ubuntu_generate_rules($version, $packagename) {
+function ubuntu_generate_rules($version, $ubuntuversion, $packagename) {
+	global $ubuntuversions_with_libav;
 	$out = "";
 	$out .= "#!/usr/bin/make -f\n";
 	$out .= "\n";
@@ -110,7 +111,11 @@ function ubuntu_generate_rules($version, $packagename) {
 	$out .= "	dh $@ --parallel\n";
 	$out .= "\n";
 	$out .= "override_dh_auto_configure:\n";
-	$out .= "	dh_auto_configure -- --disable-assert --disable-ffmpeg-versions\n";
+	if(in_array($ubuntuversion, $ubuntuversions_with_libav)) {
+		$out .= "	dh_auto_configure -- --disable-assert --disable-ffmpeg-versions\n";
+	} else {
+		$out .= "	dh_auto_configure -- --disable-assert\n";
+	}
 	$out .= "\n";
 	$out .= "override_dh_installdocs:\n";
 	$out .= "	dh_installdocs -A AUTHORS.md notes.txt README.md todo.txt\n";
@@ -167,7 +172,7 @@ function ubuntu_create_package($dir, $version, $subversion, $ubuntuversion) {
 		ubuntu_generate_changelog($packagename, $packageversion, $ubuntuversion, $packagedate),
 		ubuntu_generate_control($packagename, $builddepends, $libpackagename),
 		ubuntu_generate_copyright(),
-		ubuntu_generate_rules($version, $packagename),
+		ubuntu_generate_rules($version, $ubuntuversion, $packagename),
 		ubuntu_generate_overrides());
 }
 
