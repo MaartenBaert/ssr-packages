@@ -1,0 +1,6 @@
+[submodule "arch/simplescreenrecorder-git"]
+	path = arch/simplescreenrecorder-git
+	url = https://aur.archlinux.org/simplescreenrecorder-git.git
+[submodule "arch/lib32-simplescreenrecorder-git"]
+	path = arch/lib32-simplescreenrecorder-git
+	url = https://aur.archlinux.org/lib32-simplescreenrecorder-git.git
