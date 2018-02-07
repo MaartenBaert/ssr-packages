@@ -1,0 +1,47 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Mon, 11 Dec 2017 00:38:40 -0000
+Source: simplescreenrecorder
+Binary: simplescreenrecorder simplescreenrecorder-lib
+Architecture: source
+Version: 0.3.9+3~ppa1~zesty1
+Distribution: zesty
+Urgency: low
+Maintainer: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Changed-By: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Description:
+ simplescreenrecorder - feature-rich screen recorder that supports X11 and OpenGL
+ simplescreenrecorder-lib - feature-rich screen recorder that supports X11 and OpenGL - GLInj
+Changes:
+ simplescreenrecorder (0.3.9+3~ppa1~zesty1) zesty; urgency=low
+ .
+   * New release
+Checksums-Sha1:
+ eb6eecb9ddfbdf74a115c98e11426d6b5d40306b 2099 simplescreenrecorder_0.3.9+3~ppa1~zesty1.dsc
+ 1622154485c97648890ef1e94703c5b0825df350 1318492 simplescreenrecorder_0.3.9+3~ppa1~zesty1.tar.xz
+Checksums-Sha256:
+ 797cb77212ab981d72f20d71839b06d4a0d569c838c61be7e9d58b9d88d129e8 2099 simplescreenrecorder_0.3.9+3~ppa1~zesty1.dsc
+ 295f8f830496368c8f7106972aa000f47e22c271a5031e15e867a88c9b76f564 1318492 simplescreenrecorder_0.3.9+3~ppa1~zesty1.tar.xz
+Files:
+ d3410fa439a98478c44fb1074225721c 2099 video optional simplescreenrecorder_0.3.9+3~ppa1~zesty1.dsc
+ ec0aa1e31ed93d9595f4bafc8631dfc2 1318492 video optional simplescreenrecorder_0.3.9+3~ppa1~zesty1.tar.xz
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJOBAEBCAA4FiEEvUWU8TkPqCCik8WgB7JfLy5ck5AFAlot05IaHG1hYXJ0ZW4t
+YmFlcnRAaG90bWFpbC5jb20ACgkQB7JfLy5ck5ACOg//bIJt9mnstJcAU9ZT4QHo
+SmzGAW9mxJnotbidUSfb+sd3px2Sea6ipPJpWadCV5Xxe2itjPipdcQ2IjcqoD49
+BImuEJOpWqfUoDcngTEwrZ7i5Ls4CchtKHJQBEtw7DVk6dhHM4q5suVVM6O6CMzb
+3W4tLCUOBJ+AIpdBjty9JXEr42s827yfKnUYmjknH3XZRga8qr5/JYF+d10Byz6A
+cjAusL0ZklGhaDTDNsHNRFltab16JLaCfO8Ax14/YvTaH+mcRatBU+MJHRksCW/L
+UjcVxT1jOPkhe9oGFKw7j0g8C33Z4TW/0RETVbpI++WX4Wiq6nbsFkdX93onDv7Z
+ej0wqLVzqlovJHcDXWKbrQvIXLPce1kdIoEETfkrBACw/9cp9doZ63gl8pVslXKN
+dtnjub9WCm2gqIasrMQtHIUmyMR+DFUgNSZAd06ZBaWsnCv+p90S1GYrsQ1fwEey
++1O2WXjIPkQ5Sb4O5bMO1pRCD0bmj3YdA+h3EdVUTDQVFIF+8OjLRBdejMiY1K1s
+V5tNFiYq+meQIFH/ms18GHiRh1a7UB4/CNAloVT8p6n2bXJ+SW4gAdzZtso+9fVJ
+6za/rbTffkkcNAa3Rbk+zW+N7e1BdPkxD6m1UL71Ww7qZCo8nVDFUJ0mSIyn5Ny8
+UAK5XMT+uW6nEKJeBCCXkjs=
+=KPrH
+-----END PGP SIGNATURE-----

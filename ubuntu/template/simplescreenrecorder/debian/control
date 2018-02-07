@@ -1,0 +1,36 @@
+Source: %PACKAGENAME%
+Section: video
+Priority: optional
+Maintainer: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Build-Depends: %BUILDDEPENDS%
+Standards-Version: 3.9.6
+Homepage: http://www.maartenbaert.be/simplescreenrecorder/
+Vcs-Git: git://github.com/MaartenBaert/ssr.git
+Vcs-Browser: https://github.com/MaartenBaert/ssr
+
+Package: %PACKAGENAME%
+Architecture: i386 amd64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: %LIBPACKAGENAME%
+Description: feature-rich screen recorder that supports X11 and OpenGL
+ SimpleScreenRecorder is a feature-rich screen recorder that supports X11 and
+ OpenGL. It has a Qt-based graphical user interface. It can record the entire
+ screen or part of it, or record OpenGL applications directly. The recording
+ can be paused and resumed at any time. Many different file formats and codecs
+ are supported.
+ .
+ This package contains the main program.
+
+Package: %LIBPACKAGENAME%
+Architecture: i386 amd64
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: feature-rich screen recorder that supports X11 and OpenGL - GLInject library
+ SimpleScreenRecorder is a feature-rich screen recorder that supports X11 and
+ OpenGL. It has a Qt-based graphical user interface. It can record the entire
+ screen or part of it, or record OpenGL applications directly. The recording
+ can be paused and resumed at any time. Many different file formats and codecs
+ are supported.
+ .
+ This package contains the GLInject library.

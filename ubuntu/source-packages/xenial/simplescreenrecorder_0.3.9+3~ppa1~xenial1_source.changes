@@ -1,0 +1,47 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Mon, 11 Dec 2017 00:38:39 -0000
+Source: simplescreenrecorder
+Binary: simplescreenrecorder simplescreenrecorder-lib
+Architecture: source
+Version: 0.3.9+3~ppa1~xenial1
+Distribution: xenial
+Urgency: low
+Maintainer: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Changed-By: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Description:
+ simplescreenrecorder - feature-rich screen recorder that supports X11 and OpenGL
+ simplescreenrecorder-lib - feature-rich screen recorder that supports X11 and OpenGL - GLInj
+Changes:
+ simplescreenrecorder (0.3.9+3~ppa1~xenial1) xenial; urgency=low
+ .
+   * New release
+Checksums-Sha1:
+ 886dfa5687ec3cbad17fe59f1e7b74a048e6f377 2103 simplescreenrecorder_0.3.9+3~ppa1~xenial1.dsc
+ 6e603fb5e9f690517c3c9a5d0a19565db51f2f19 1318508 simplescreenrecorder_0.3.9+3~ppa1~xenial1.tar.xz
+Checksums-Sha256:
+ b48212c12a9aed0b2c8678ce855c4a7ead24fad299286bd42aeae375f73268fd 2103 simplescreenrecorder_0.3.9+3~ppa1~xenial1.dsc
+ 24054b6f94ea71110afbefa59f1faf9edd1fa2bbadd3a46265a092d980948182 1318508 simplescreenrecorder_0.3.9+3~ppa1~xenial1.tar.xz
+Files:
+ 15d31d5bc574026f22ab41358ab24ae4 2103 video optional simplescreenrecorder_0.3.9+3~ppa1~xenial1.dsc
+ 27b70198de066a3f29be834c38956c8d 1318508 video optional simplescreenrecorder_0.3.9+3~ppa1~xenial1.tar.xz
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJOBAEBCAA4FiEEvUWU8TkPqCCik8WgB7JfLy5ck5AFAlot05AaHG1hYXJ0ZW4t
+YmFlcnRAaG90bWFpbC5jb20ACgkQB7JfLy5ck5Cs/Q/+NpPmVcDNpQa5Q1inJHyM
++1LBUw8fjKKbAsQw2Ygl4/imkqtvObS1aVj605GEpZckUXdz8roPvzqBKb1kxbmQ
+mllM8M5p9bMmuSTZQfImO9Lns/lrkczlz1txdAMQH4YFT4i4A2rHw08p2nA8cZTs
+yeRRV6815KRA//gMWxXFmmjsEOOkLWplrJNPH/OakMK9N3qHI6Fshu09AQshfnuv
++TztVPzbvu93ehV+TyvhH26SjOvON6C1hJtagjClUKpLa9QGx1/Prmt8v5NWs1zn
+bCWRG2igpH/+0F+tqnKHXCh0I95ymPuoLOVHYScW96NI+syGivAS82pZ0acylQOF
+QOqkRdeyGTPztCmXQtNJHgwsB0Nck8JFhfXaqA1Vn9oKP0h9h4RBjPe57Tm45LI7
+QflG7z3H1lR6t1zAA8QVFBkshS8Lz5WgV88qjmMYYG1oe5jozudJVMUt1QDfR6BV
+AQE/w41QLu3VpVr16L97TMGIX4Xw19mQUxUfvLOxaSqEHIsr+OSgw+3i9V+Xpp9B
+jUy8ZhzN8Buxzd2+1aOnmGmlF03moJMN0kyphU1gLwX9J0IXUWIcq8vrX1wefsdu
+T1s73E9WlsRFQLEselYAof+KgkqCqSeKprclwakDX81tPZauZo35O5/6NSDSP17K
+/jzLZN9Hb0M2y8zrEPD8KZQ=
+=k1Vd
+-----END PGP SIGNATURE-----

@@ -1,0 +1,47 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Mon, 11 Dec 2017 00:38:37 -0000
+Source: simplescreenrecorder
+Binary: simplescreenrecorder simplescreenrecorder-lib
+Architecture: source
+Version: 0.3.9+3~ppa1~trusty1
+Distribution: trusty
+Urgency: low
+Maintainer: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Changed-By: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Description:
+ simplescreenrecorder - feature-rich screen recorder that supports X11 and OpenGL
+ simplescreenrecorder-lib - feature-rich screen recorder that supports X11 and OpenGL - GLInj
+Changes:
+ simplescreenrecorder (0.3.9+3~ppa1~trusty1) trusty; urgency=low
+ .
+   * New release
+Checksums-Sha1:
+ 0977cf405e1630b686a99b662580f4f194cc7f70 2104 simplescreenrecorder_0.3.9+3~ppa1~trusty1.dsc
+ 6c18b633a8727cd9c0692455368348c050855aac 1318584 simplescreenrecorder_0.3.9+3~ppa1~trusty1.tar.xz
+Checksums-Sha256:
+ a904776c3fc3ed678d71c64afb791642b9fa1799e6ce590c0a82858bddfd878e 2104 simplescreenrecorder_0.3.9+3~ppa1~trusty1.dsc
+ 94d84aac5dc648d3c7c3d8ffb6314ea46fb400fe0c493c1fcdcf1dc699705787 1318584 simplescreenrecorder_0.3.9+3~ppa1~trusty1.tar.xz
+Files:
+ c0be32753527035a690ff69e5269fce0 2104 video optional simplescreenrecorder_0.3.9+3~ppa1~trusty1.dsc
+ 7b708f4d914498dacb81f590a993735b 1318584 video optional simplescreenrecorder_0.3.9+3~ppa1~trusty1.tar.xz
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJOBAEBCAA4FiEEvUWU8TkPqCCik8WgB7JfLy5ck5AFAlot048aHG1hYXJ0ZW4t
+YmFlcnRAaG90bWFpbC5jb20ACgkQB7JfLy5ck5CbtQ/+M5c7UdkWRhCSQrjvWzlj
+9x+ZEjDB4JMqP1HruOKyzZAt44d+/32C5vwpa71Jyu195KrattnUoe8cMM1KAnFP
+13alSEJj5cBaz6/dIs2sTp+1z/asyQHIKSXySJ8zqG/xg1ooGSqvlHmvs6RewnPD
+CYbJSjInG3RStOl8Nq1dAmfNiqvqOR0zm75xsIhp0Md4YWNwRNcZ7gDoZD7ULwiP
+Vijd3qeTdTvVSUmnbDyj+ektQm3tTyDGCVL92GUDyeJJHi4aAggi3LEoegfGXEpM
+qiWac1rSe78ccOsSxUw+ijwdLpV1BmkNjnM/oRUM96ofzglrfWot6T5e8bqxCSua
+R2l1r2KOD3YpR4j7dmGRamgAaswjlH6Ziv+8eSgnEbJKZito9kCIGh6rBF4z97MG
+ZdyOXhZj01+elRo79W8qzeLgJmjZ+eyE7vR+C1b8E4rGvUBPC6VuWvDhArkcxm8T
+FZZJsqWvUFE60ovOjtda3XI7t7wJ+f1mmXH1I27HlcWfpOUmcvNEvusqYth3e0Iv
+eqrWgx6NuEBxP41Sr4TqRTUixxP4HunIYluTVXpZmplQ3kBb7rEfjc363exrc+j5
+Mr/Ye9CEzzpFlerdKxgB45W/3AZwtQU5UitC+PEd+8vXyna0nA5OID3JKokagCaN
+A+pfPiV5jgqyAChQbRlqsEA=
+=Er2Q
+-----END PGP SIGNATURE-----

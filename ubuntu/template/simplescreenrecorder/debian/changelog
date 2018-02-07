@@ -1,0 +1,5 @@
+%PACKAGENAME% (%PACKAGEVERSION%) %UBUNTUVERSION%; urgency=low
+
+  * New release
+
+ -- Maarten Baert (v2) <maarten-baert@hotmail.com>  %PACKAGEDATE%
