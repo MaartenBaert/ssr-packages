@@ -1,0 +1,47 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Fri, 09 Mar 2018 19:11:50 -0000
+Source: simplescreenrecorder
+Binary: simplescreenrecorder simplescreenrecorder-lib
+Architecture: source
+Version: 0.3.10+4~ppa1~artful1
+Distribution: artful
+Urgency: low
+Maintainer: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Changed-By: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Description:
+ simplescreenrecorder - feature-rich screen recorder that supports X11 and OpenGL
+ simplescreenrecorder-lib - feature-rich screen recorder that supports X11 and OpenGL - GLInj
+Changes:
+ simplescreenrecorder (0.3.10+4~ppa1~artful1) artful; urgency=low
+ .
+   * New release
+Checksums-Sha1:
+ c7f904384055549c305ae12c664d8d95aca5d01a 2150 simplescreenrecorder_0.3.10+4~ppa1~artful1.dsc
+ de58c61599b897aa410bc5ae2f1c5fc4b904b1ba 1321788 simplescreenrecorder_0.3.10+4~ppa1~artful1.tar.xz
+Checksums-Sha256:
+ 4ccfb914ab009a1342f62431906de638b43f1ef92f508506367da900c3199d31 2150 simplescreenrecorder_0.3.10+4~ppa1~artful1.dsc
+ defdf584bc53527ff8e0ff2fb483204c8216006d9519991306347c06b951cfe7 1321788 simplescreenrecorder_0.3.10+4~ppa1~artful1.tar.xz
+Files:
+ 6292491b138e827c894e3bfa89d4bd1c 2150 video optional simplescreenrecorder_0.3.10+4~ppa1~artful1.dsc
+ 1c08661e4a6099f8ec2e7db6ba942827 1321788 video optional simplescreenrecorder_0.3.10+4~ppa1~artful1.tar.xz
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJOBAEBCAA4FiEEvUWU8TkPqCCik8WgB7JfLy5ck5AFAlqi3HcaHG1hYXJ0ZW4t
+YmFlcnRAaG90bWFpbC5jb20ACgkQB7JfLy5ck5Dexg/8CqgybxbsGCV0sFwKlfrZ
+/sDLbf0B8Xz9WjmkkOvxU8OFR32q53hWvgNlNw8WFCCzsn4UksVwuLbTWFXhrD/I
+m0hzsdrhEFk8a01uAr7HLBaTsd9BXx8vWeal2mzr8WtQlXlzTygdPze1c8Ek2Xfe
+gcc9HGUgOagOnXwR29+amAJCUFFR9wKKquGXNQbio4Tmw5QwdUVx6YV85gR6ZWt4
+A6/lGWNoTlHhZMHcYxprdzfhE7o5q7qhQ33NWESmYqCJ5GVPWxhdp3TtHun5WNGa
+EoyRJWLvpO9A8vRkzAlR0iAwvOkeICmXMbdQnK1a1txC6ncZ6SHugPPOJMisgGgj
+UXd8ybwwMQAaX31TQtGehE2p4FkCtR42br5mg1rVGThnJFbcjAJsxfjQApAd1YjC
+VLzrEXOMZMLMTVhoLxcfACpe3PxHVvuafhJIEtKhVZZIak88Mij1kgwx8PdVRv6i
+MHK718k4/6V4OJlYCicnxXjJD9Lv6jLCREPpwxfIvPnLJbwMyYjhRJrE7iQKFWR3
+xSVm07o3xBCGd0LpUqXRJ/nyHr+BKCVfJy0h4+QWKPi4fQkra7fjWNmA1YS6RO/F
+sm04DPVvXBPz6ArslOcMVUQTkaDosSMqwwreDzEha7ix1RiQNuZRPNYuZ/u7197a
+/xYGz7prvJnqeNT4RcnjTT4=
+=6ocr
+-----END PGP SIGNATURE-----

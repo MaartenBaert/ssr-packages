@@ -1,0 +1,47 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Fri, 09 Mar 2018 19:11:51 -0000
+Source: simplescreenrecorder
+Binary: simplescreenrecorder simplescreenrecorder-lib
+Architecture: source
+Version: 0.3.10+4~ppa1~bionic1
+Distribution: bionic
+Urgency: low
+Maintainer: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Changed-By: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Description:
+ simplescreenrecorder - feature-rich screen recorder that supports X11 and OpenGL
+ simplescreenrecorder-lib - feature-rich screen recorder that supports X11 and OpenGL - GLInj
+Changes:
+ simplescreenrecorder (0.3.10+4~ppa1~bionic1) bionic; urgency=low
+ .
+   * New release
+Checksums-Sha1:
+ 785582690f1655bed91efac3cc4ac958ba007bcc 2150 simplescreenrecorder_0.3.10+4~ppa1~bionic1.dsc
+ 38ceddebd10bb5024fe43d1258bf7a2bdb212eb3 1321764 simplescreenrecorder_0.3.10+4~ppa1~bionic1.tar.xz
+Checksums-Sha256:
+ 717737454b128821258f89ec6de9db8e87a6b85212795fd24298c38be2bf7171 2150 simplescreenrecorder_0.3.10+4~ppa1~bionic1.dsc
+ 337b5f231242673c18db423b462e63aca83de173dcb3a25718d60415c84e5888 1321764 simplescreenrecorder_0.3.10+4~ppa1~bionic1.tar.xz
+Files:
+ 61e640397b7b9d47052d151e4c1142f2 2150 video optional simplescreenrecorder_0.3.10+4~ppa1~bionic1.dsc
+ 7f31297f8d42a3bdc989297f4c298077 1321764 video optional simplescreenrecorder_0.3.10+4~ppa1~bionic1.tar.xz
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJOBAEBCAA4FiEEvUWU8TkPqCCik8WgB7JfLy5ck5AFAlqi3HkaHG1hYXJ0ZW4t
+YmFlcnRAaG90bWFpbC5jb20ACgkQB7JfLy5ck5C/lhAAmSGoTgmtp7XUgsWoH9kQ
+c9hP/q8GbeGQ3AqDBSZriJQVckCaJwyg1zPNUrIkcVklMZnnKzY3zSLC68kmEiG9
+Ht+9qLEl1QXckN1thT92C7Dnxbt0N22TFmliTDo0w8g1N55XOrpwBkWeU2WVNbEh
+Hmdb0n/oUHmwXE1VIP77hglFLlqm1R5oQ8A5lsY8inPjWQQn83mzF7smVOQ5yqbF
+PuFJHw8qN28EpbGF83Ny8U6XCe+JAFqUErS0tB2S10MUqG87YxkjDhTIcwkZ7Qow
+xfY3JlC6GICN7PRPjyNqqZ6wxqZiQGtZE/U7q3jtESJRbsSvKvULHHmvvUZWSnXo
+QjsZaI5R0eR6kMExeCTMTPfDTGI08dWmGUZ1EgFz9nRHNWjMcshYDHYn8z6NM39v
+TMR6Gx590sXrb9O3xJJpjywn6zWRD0hCsMcP52qgiIvN7wIMuo8TOHGmAc4FclHc
+59rFQ0vw0v1uM6/wAAkUBlN5EGO0hEi6+nlfz6OAKSWSjD3PRcnXM98EXFyQbcXn
+wvTXVeGYJEsIIv55zpE9ON+OzZHPPRk2p6RecSc3z674OkmU5zkyI/OmpiR6IElc
+c63Cei7fLbheFzyBOYXLnktBtkrkoD003dlMG3Jj/UNHQF2fZibhdWHbf9w8UOmX
+4L93h56iEJ34ZarWBETGnn8=
+=3AG2
+-----END PGP SIGNATURE-----

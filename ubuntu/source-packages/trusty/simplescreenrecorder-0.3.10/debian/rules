@@ -1,12 +1,12 @@
 #!/usr/bin/make -f
 
-export QT_SELECT=%QTSELECT%
+export QT_SELECT=qt4
 
 %:
 	dh $@ --parallel --buildsystem=cmake
 
 override_dh_auto_configure:
-	dh_auto_configure -- %CONFIGUREFLAGS%
+	dh_auto_configure -- -DENABLE_FFMPEG_VERSIONS=TRUE -DWITH_QT5=FALSE
 
 override_dh_installdocs:
 	dh_installdocs -A AUTHORS.md notes.txt README.md todo.txt

@@ -1,0 +1,30 @@
+Format: 0.2
+Source: simplescreenrecorder
+Binary: simplescreenrecorder simplescreenrecorder-lib
+Architecture: source
+Version: 0.3.10+4~ppa1~artful1
+Checksums-Md5:
+ 50acbbeb371644e1ee14f7db5f55fa2f 1230 simplescreenrecorder_0.3.10+4~ppa1~artful1.dsc
+Checksums-Sha1:
+ fc23e80c025cf07fb4faa1fdf002667d04d13209 1230 simplescreenrecorder_0.3.10+4~ppa1~artful1.dsc
+Checksums-Sha256:
+ 9f458af43de2bae9ea0c3a6e1701b2966f1526606d5d8ac3235104e54ad0249b 1230 simplescreenrecorder_0.3.10+4~ppa1~artful1.dsc
+Build-Architecture: amd64
+Build-Date: Fri, 09 Mar 2018 20:11:51 +0100
+Environment:
+ DEB_BUILD_OPTIONS="parallel=8"
+ LANG="en_US.utf8"
+ LC_ADDRESS="en_GB.UTF-8"
+ LC_COLLATE="C"
+ LC_CTYPE="en_GB.UTF-8"
+ LC_IDENTIFICATION="en_GB.UTF-8"
+ LC_MEASUREMENT="en_GB.UTF-8"
+ LC_MESSAGES="en_US.UTF-8"
+ LC_MONETARY="en_GB.UTF-8"
+ LC_NAME="en_GB.UTF-8"
+ LC_NUMERIC="en_GB.UTF-8"
+ LC_PAPER="en_GB.UTF-8"
+ LC_TELEPHONE="en_GB.UTF-8"
+ LC_TIME="en_GB.UTF-8"
+ MAKEFLAGS="-j8"
+ SOURCE_DATE_EPOCH="1520622710"

@@ -1,0 +1,47 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Fri, 09 Mar 2018 19:11:46 -0000
+Source: simplescreenrecorder
+Binary: simplescreenrecorder simplescreenrecorder-lib
+Architecture: source
+Version: 0.3.10+4~ppa1~trusty1
+Distribution: trusty
+Urgency: low
+Maintainer: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Changed-By: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Description:
+ simplescreenrecorder - feature-rich screen recorder that supports X11 and OpenGL
+ simplescreenrecorder-lib - feature-rich screen recorder that supports X11 and OpenGL - GLInj
+Changes:
+ simplescreenrecorder (0.3.10+4~ppa1~trusty1) trusty; urgency=low
+ .
+   * New release
+Checksums-Sha1:
+ fd477430560ea49de8ce1101a99fae750066715c 2108 simplescreenrecorder_0.3.10+4~ppa1~trusty1.dsc
+ 769907fb1562d70beee45f3c72347baa93e3d14c 1321720 simplescreenrecorder_0.3.10+4~ppa1~trusty1.tar.xz
+Checksums-Sha256:
+ 553e780652e7b6d7532fa5d10dc5f2c1af447f153ee400ea93105876c282e2a6 2108 simplescreenrecorder_0.3.10+4~ppa1~trusty1.dsc
+ 95b423951bb751e0f15de3ef673ae1bbf5eedd276f447195d1e17e8d0bb655a5 1321720 simplescreenrecorder_0.3.10+4~ppa1~trusty1.tar.xz
+Files:
+ 47fa33fe6e49a0840db1fb0f4e066305 2108 video optional simplescreenrecorder_0.3.10+4~ppa1~trusty1.dsc
+ d32c3708c58f3e28d7945ccf7d654ff0 1321720 video optional simplescreenrecorder_0.3.10+4~ppa1~trusty1.tar.xz
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJOBAEBCAA4FiEEvUWU8TkPqCCik8WgB7JfLy5ck5AFAlqi3HQaHG1hYXJ0ZW4t
+YmFlcnRAaG90bWFpbC5jb20ACgkQB7JfLy5ck5DAOw//aHDvnPDW8BJYOOcOy396
+slU3Yb1GbiFU1yfUdboQCK0Q9bs2bOKJ4yQ8AxLEq8UEHKosoAxcWcl5PaH+0OGJ
+IhTjKZ60bOBbglI6Y+75R/JN2Fan6TsYszl1zklIDjV0dgejf8WEymh5d2WfG2Ql
+FTktv+c0Lo/Bn0ALzt+oCSd4CftfgYap1tneVZveC1rGzef5c+nSbBr8vIJYGAMB
+S58DDzlQ3wWUo9hE5CkgrzhuSk3nmBWxrIrGOefwfsvKUrV6olvI2edsSwg8kIhU
+r/Dc/N0ib0C1QODhJs0vY2cSxKwX3rIg55HSRm+vinVUptJLhTnqXHSiPTW8ZqTr
+ahwRtudT/IWsNGt1mmDvBieFrfbmNuXvv426KAT/VokScAGqcw+/6x4ac5va/yAn
+vpP1PlQlwS4UurSQGCKcXNYmrAsvdhtwGm+0DD4QVl9XoCqcT4VniCaTw2+/+iVs
+dwZ2fRwAGJNPmu/a4navSb9ziXXn7ClIX6tIpbmMYhvRyUzjavVJEw79HWdVpFlS
+9CNpGnseOvoG1bjWBGN3ThlFJaIwKqCYoqIPkU6EFnVJY5ZNwTN4BZvGPeVLyz7Z
+Up2jW+xmBBieWqo4uDyiPX6sO9YeKUTVM/fS1OSY4end5zVppgGanDqFZtCNw82J
+/5bjoQB4lj/A+tgTNs6SJvw=
+=ggcr
+-----END PGP SIGNATURE-----

@@ -1,0 +1,47 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Fri, 09 Mar 2018 19:11:48 -0000
+Source: simplescreenrecorder
+Binary: simplescreenrecorder simplescreenrecorder-lib
+Architecture: source
+Version: 0.3.10+4~ppa1~xenial1
+Distribution: xenial
+Urgency: low
+Maintainer: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Changed-By: Maarten Baert (v2) <maarten-baert@hotmail.com>
+Description:
+ simplescreenrecorder - feature-rich screen recorder that supports X11 and OpenGL
+ simplescreenrecorder-lib - feature-rich screen recorder that supports X11 and OpenGL - GLInj
+Changes:
+ simplescreenrecorder (0.3.10+4~ppa1~xenial1) xenial; urgency=low
+ .
+   * New release
+Checksums-Sha1:
+ 324553ce938caa5f9f1d0ba36f28bdcabcd58b0c 2107 simplescreenrecorder_0.3.10+4~ppa1~xenial1.dsc
+ 4c1b3c248adf00c590f92f8e98eeb453f3be230a 1321716 simplescreenrecorder_0.3.10+4~ppa1~xenial1.tar.xz
+Checksums-Sha256:
+ fe32bc6be0e2f9b0e0917f309a6fe33f17a0550bbe7bbbf660893b2f871471fa 2107 simplescreenrecorder_0.3.10+4~ppa1~xenial1.dsc
+ ec4ca27b5c5a1ede23c3e3494b448244065168d9ca028f666168e82d6e1a7c5f 1321716 simplescreenrecorder_0.3.10+4~ppa1~xenial1.tar.xz
+Files:
+ 05c0639f2fc35270908387bbff30b088 2107 video optional simplescreenrecorder_0.3.10+4~ppa1~xenial1.dsc
+ c714fcc13827db0e284cb8a9a574e67e 1321716 video optional simplescreenrecorder_0.3.10+4~ppa1~xenial1.tar.xz
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJOBAEBCAA4FiEEvUWU8TkPqCCik8WgB7JfLy5ck5AFAlqi3HUaHG1hYXJ0ZW4t
+YmFlcnRAaG90bWFpbC5jb20ACgkQB7JfLy5ck5Bi3Q/7B+5PC/GfOqzNF3lWHrfp
+djwWIOMC1uEOahdrh9sag3ZIkTvVJzB+k05TTHKE4HI4Wjhyb842Y+yifbiO7YKt
+LksvlAAEG+HhlyfqiF4Bzdki0EOwX/pfUn/wAx3qKBl7ThPYv+rwg8F/kqrTdo8w
+5LmAfu6IJWOUzTr3LDU82t8+yUi3R2e38spau1xtZuH09VhixYzIGb2AjXf4BUwr
+dJXv3KpVf1I3uWeoqxoDa0H9P/d67BZ05PQuqpBe45RBYkIXLWhqkb5kEetLAcys
+owP3LVKOlSu6J1VE/Dn+WuuJL0WE68H3eKFKE/2CHLpsRDqmho5pAH6aw5eM3ULJ
+dzAhqO1Ih6zzPv3P9BMjLHSScAfNbWtZ6v3GPC61JkJi+pP9D0YcSJbNkFxilJHA
+v7KOzxewX+oSLXkom4mr8wZS20s/9racO2ZE+N2Hqn4p94XLmBKrsV6qW4zDXNvQ
+sRiE0Qg/vh5WU0riA8rPID8AqbTIZWLoCmAfIsyL2AE/0vgr3GVhZv12c3YHDVxs
+bwYmJ6hCR/nx0J1aarrD73njfUPK6mz98xvN8ZL2EmIx3bqiC/QW7NWeRkPovqSp
+meBuGe/bIt9Si530IYjf2wdC6JTri2MST7D12P7luFqpVM1m9ZMjM1ASyPV21lm7
+YmlJJbslIE1SUD9QdJKQa+w=
+=j4pR
+-----END PGP SIGNATURE-----

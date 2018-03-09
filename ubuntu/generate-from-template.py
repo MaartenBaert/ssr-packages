@@ -23,12 +23,13 @@ import time
 # location of the cloned Git repository containing the actual source code
 source_path = "/home/maarten/Documents/ssr"
 
-version = "0.3.9"
-subversion = "3"
+version = "0.3.10"
+subversion = "4"
 
-ubuntuversions = ["trusty", "xenial", "zesty", "artful"]
+ubuntuversions = ["trusty", "xenial", "artful", "bionic"]
 ubuntuversions_with_cmake2 = ["trusty"]
-ubuntuversions_with_libav = ["trusty", "vivid", "wily", "xenial"]
+ubuntuversions_with_libav = ["trusty", "xenial"]
+ubuntuversions_with_qt4 = ["trusty", "xenial"]
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
@@ -37,17 +38,22 @@ def generate(version, subversion, ubuntuversion):
 	path_template = os.path.join("template", "simplescreenrecorder")
 	path_target = os.path.join("source-packages", ubuntuversion, "simplescreenrecorder-%s" % (version))
 	
-	ffmpeg_flags = "-DENABLE_FFMPEG_VERSIONS=FALSE" if ubuntuversion in ubuntuversions_with_libav else ""
-	cmake = "cmake3" if ubuntuversion in ubuntuversions_with_cmake2 else "cmake"
+	configure_flags = "-DENABLE_FFMPEG_VERSIONS=%s -DWITH_QT5=%s" % (
+		"TRUE" if ubuntuversion in ubuntuversions_with_libav else "FALSE",
+		"FALSE" if ubuntuversion in ubuntuversions_with_qt4 else "TRUE")
+	depends_cmake = "cmake3" if ubuntuversion in ubuntuversions_with_cmake2 else "cmake"
+	depends_qt = "qt4-qmake, libqt4-dev" if ubuntuversion in ubuntuversions_with_qt4 else "qt5-qmake, qttools5-dev-tools, qtbase5-dev, libqt5x11extras5-dev"
+	qt_select = "qt4" if ubuntuversion in ubuntuversions_with_qt4 else "qt5"
 	
 	replace = {
-		"BUILDDEPENDS": "debhelper (>= 9), dpkg-dev (>= 1.16.0), " + cmake + " (>= 3.1), pkg-config, libgl1-mesa-dev, libglu1-mesa-dev, qt4-qmake, libqt4-dev, libavformat-dev, libavcodec-dev, libavutil-dev, libswscale-dev, libasound2-dev, libpulse-dev, libjack-dev, libx11-dev, libxext-dev, libxfixes-dev, libxi-dev",
-		"CONFIGUREFLAGS": ffmpeg_flags,
+		"BUILDDEPENDS": "debhelper (>= 9), dpkg-dev (>= 1.16.0), " + depends_cmake + " (>= 3.1), pkg-config, libgl1-mesa-dev, libglu1-mesa-dev, " + depends_qt + ", libavformat-dev, libavcodec-dev, libavutil-dev, libswscale-dev, libasound2-dev, libpulse-dev, libjack-dev, libx11-dev, libxext-dev, libxfixes-dev, libxi-dev",
+		"CONFIGUREFLAGS": configure_flags,
 		"COPYRIGHTYEARS": "2012-%s" % (time.strftime("%Y")),
 		"LIBPACKAGENAME": "simplescreenrecorder-lib",
 		"PACKAGEDATE": email.utils.formatdate(),
 		"PACKAGENAME": "simplescreenrecorder",
 		"PACKAGEVERSION": "%s+%s~ppa1~%s1" % (version, subversion, ubuntuversion),
+		"QTSELECT": qt_select,
 		"UBUNTUVERSION": ubuntuversion,
 		"VERSION": version,
 	}
