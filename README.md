@@ -20,13 +20,14 @@ Arch Linux
 
 There are two packages:
 
-- The `simplescreenrecorder` package which provides the executable and the `glinject` library.
-- The `lib32-simplescreenrecorder` package which provides a 32-bit version of the `glinject` library for 64-bit systems.
+- The `simplescreenrecorder-git` (AUR) package which provides the executable and the `glinject` library.
+- The `lib32-simplescreenrecorder-git` (AUR) package which provides a 32-bit version of the `glinject` library for 64-bit systems.
 
 AUR packages are git-based. Updating works like this:
 
 - Run `makepkg --printsrcinfo > .SRCINFO`.
 - Commit and push with git.
+(The `simplescreenrecorder` package was removed from archlinux repo)
 
 Ubuntu
 ------
